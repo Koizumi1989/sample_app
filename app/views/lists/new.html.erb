@@ -1,8 +1,17 @@
-<%= form_with model: List.new, local: true do |f| %>
+<h1>新規投稿</h1>
+<%= form_with model: @list,url: '/lists',method: :post, local: true do |f| %>
+ <h4>タイトル</h4>
+ <%= f.text_field :title %>
+
+ <h4>本文</h4>
+ <%= f.text_area :body %>
+
+ <%= f.submit '投稿' %>
 <% end %>
-<!--「List.new」と定義することで、Listモデルの情報をもとに-->
+
+<!--「List.new(@listのこと）」と定義することで、Listモデルの情報をもとに-->
 <!--新しくオブジェクトが作成され、Listモデルに存在するtitle・bodyが格納-->
-<!--できるようになります。-->
+<!--できるようになります。@listはコントローラーに定義した。インスタンス変数-->
 
 <!--modelオプション(上記model部分)でList.newを設定するだけで、-->
 <!--自動的CreateアクションのURLへ送信することができる。-->
