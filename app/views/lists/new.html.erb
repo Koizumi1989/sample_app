@@ -1,2 +1,11 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<%= form_with model: List.new, local: true do |f| %>
+<% end %>
+<!--「List.new」と定義することで、Listモデルの情報をもとに-->
+<!--新しくオブジェクトが作成され、Listモデルに存在するtitle・bodyが格納-->
+<!--できるようになります。-->
+
+<!--modelオプション(上記model部分)でList.newを設定するだけで、-->
+<!--自動的CreateアクションのURLへ送信することができる。-->
+
+<!--local: trueがない場合、Rails5ではAjaxによる送信という意味になる。-->
+<!--普通にHTMLとしてフォームを送信する場合にlocal: trueが必要になる-->
