@@ -1,16 +1,29 @@
 <h1>新規投稿</h1>
-<%= form_with model: @list,url: '/lists',method: :post, local: true do |f| %>
+<% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @list, url: '/lists', method: :post, local:true do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  <h4>画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+  <%= f.submit '投稿' %>
+<% end %>
 <!--@listはモデルではなくモデルに何をさせたいかという意味-->
 <!--動かすため(lists)にform_withはpostメソッドでリストコントローラーの　続く-->
   <!--クリエイトへ送る。-->
- <h4>タイトル</h4>
- <%= f.text_field :title %>
 
- <h4>本文</h4>
- <%= f.text_area :body %>
+ <!--file_fieldはファイルを投稿するフィールド　画像以外のファイルも可-->
+ <!--そのため、accept: "image/*"を使い、画像ファイルしか投稿できないように-->
 
- <%= f.submit '投稿' %>
-<% end %>
 
 <!--「List.new(@listのこと）」と定義することで、Listモデルの情報をもとに-->
 <!--新しくオブジェクトが作成され、Listモデルに存在するtitle・bodyが格納-->

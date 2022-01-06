@@ -7,11 +7,15 @@ class ListsController < ApplicationController
 # 新しくオブジェクトが作成され、Listモデルに存在するtitle・bodyが格納
 # できるようになります。
 
-  def create
-    list = List.new(list_params)
-    list.save
-    redirect_to list_path(list.id)
+  def create #httpメソッドpost
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to list_path(@list.id)
+    else
+      render :new
+    end
   end
+   # render :アクション名で、同じコントローラ内の別アクションのViewを表示できます。
 
   def index
     @lists = List.all
@@ -28,14 +32,20 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
-  def update
+  def update #httpメソッドpatch
     list = List.find(params[:id])
     list.update(list_params)
     redirect_to list_path(list.id)
   end
 
+  def destroy #httpメソッドdelete
+    list = List.find(params[:id])  # データ（レコード）を1件取得
+    list.destroy  # データ（レコード）を削除
+    redirect_to '/lists'  # 投稿一覧画面へリダイレクト
+  end
+
   private
   def list_params
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, :image)
   end
 end
