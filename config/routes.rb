@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
   # postのlistsはcontroller名と同じ(modelの複数形)名前なのでリンクできる。
   get 'lists' => 'lists#index'
-  get 'lists/show'
-  get 'lists/edit'
+  get 'lists/:id' => 'lists#show',as: 'list'
+  get 'lists/:id/edit' => 'lists#edit',as: 'edit_list'
   get '/top' => 'homes#top'
+  patch
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
