@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
   def new
     @list = List.new
+    # List.newのnewとdef newのnewは違う。createの箇所も同じ。
   end
   # 「List.new」と定義することで、Listモデルの情報をもとに
 # 新しくオブジェクトが作成され、Listモデルに存在するtitle・bodyが格納

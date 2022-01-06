@@ -1,5 +1,8 @@
 <h1>新規投稿</h1>
 <%= form_with model: @list,url: '/lists',method: :post, local: true do |f| %>
+<!--@listはモデルではなくモデルに何をさせたいかという意味-->
+<!--動かすため(lists)にform_withはpostメソッドでリストコントローラーの　続く-->
+  <!--クリエイトへ送る。-->
  <h4>タイトル</h4>
  <%= f.text_field :title %>
 
