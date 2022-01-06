@@ -14,6 +14,10 @@ class ListsController < ApplicationController
   end
 
   def index
+    @lists = List.all
+    # List.all　listsーブルに保存された全データ取得
+    # インスタンス変数は自由に名前を決めることができますが、
+    # 今回は複数のListレコードが取得できるので、複数形で@listsのよう変数名にしました。
   end
 
   def show
@@ -21,7 +25,7 @@ class ListsController < ApplicationController
 
   def edit
   end
-  
+
   private
   def list_params
     params.require(:list).permit(:title, :body)
