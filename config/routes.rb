@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # クリエイトへ送る。
 
   # postのlistsはcontroller名と同じ(modelの複数形)名前なのでリンクできる。
-  get 'lists' => 'lists#index'
+  get 'lists/index'
   get 'lists/:id' => 'lists#show',as: 'list'
   get 'lists/:id/edit' => 'lists#edit',as: 'edit_list'
   get '/top' => 'homes#top'
