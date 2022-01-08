@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # クリエイトへ送る。
 
   # postのlistsはcontroller名と同じ(modelの複数形)名前なのでリンクできる。
-  get 'lists/index'
+  get 'lists' => 'lists#index',as: 'lists_index'
   get 'lists/:id' => 'lists#show',as: 'list'
   get 'lists/:id/edit' => 'lists#edit',as: 'edit_list'
   get '/top' => 'homes#top'
@@ -15,4 +15,4 @@ Rails.application.routes.draw do
   delete 'lists/:id' => 'lists#destroy',as: 'destroy_list'
   # httpメソッド/url/list controller#action/名前付きpath
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+ end

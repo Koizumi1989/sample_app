@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def new
-    @list = List.new
+    @list = List.new #newactionで定義している変数（@list)はnewactionかnew.htmlでしか使えない。
     # List.newのnewとdef newのnewは違う。createの箇所も同じ。
   end
   # 「List.new」と定義することで、Listモデルの情報をもとに
@@ -8,9 +8,9 @@ class ListsController < ApplicationController
 # できるようになります。
 
   def create #httpメソッドpost
-    @list = List.new(list_params)
+    @list = List.new(list_params) #strongパラメーターのlist_params
     if @list.save
-      redirect_to list_path(@list.id)
+      redirect_to list_path(@list.id) #viewがないからどこに遷移するかかかないとエラーが出る。 list_pathのlistはroutesのas名前部分。redirectの場合は_pathをつける必要がある。
     else
       render :new
     end
