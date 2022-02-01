@@ -45,7 +45,11 @@ class ListsController < ApplicationController
   end
 
   private
+  # private以下はこのコントローラー内でしか呼び出せません。
   def list_params
     params.require(:list).permit(:title, :body, :image)
+    # params formから送られてくるデータが入る
+    # require データの中からモデル名（ここではlist）を指定し絞り込む
+    # permit requireで絞り込んだデータの中から、保存を許可するカラムを指定
   end
 end
