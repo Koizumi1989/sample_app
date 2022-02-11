@@ -18,6 +18,7 @@ class ListsController < ApplicationController
    # render :アクション名で、同じコントローラ内の別アクションのViewを表示できます。
 
   def index
+    puts "作成したキー #{ENV['SECRET_KEY']}"
     @lists = List.all
     # List.all　listsーブルに保存された全データ取得
     # インスタンス変数は自由に名前を決めることができますが、
